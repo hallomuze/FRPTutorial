@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
-    var name: String = "Julia"
+ 
+    var name: String = "Eddie"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
     }
     
@@ -29,16 +31,23 @@ class ViewController: UIViewController {
     func showAlertController() {
         let title = "Update Name"
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        //핸들러 정의
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alert.addAction(cancelAction)
+        
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             if let textInput = alert.textFields?.first?.text {
                 self.name = textInput
                 self.nameLabel.text = self.name
             }
         }
-        alert.addTextField()
+        
+        //핸들러 추가
+        alert.addAction(cancelAction)
         alert.addAction(okAction)
+        alert.addTextField()  //입력창 추가
+        
+        //화면 표시
         present(alert, animated: true)
     }
 
