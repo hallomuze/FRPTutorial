@@ -27,6 +27,12 @@ class ViewController: UIViewController {
             .bindTo(nameLabel.rx.text)
             .addDisposableTo(disposableBag)
 
+        //name 변수를 옵져블하게 만들고
+        //name 이 변경되면 ---> nameLabel도 변경되도록 바인딩한다
+        //마지막으로 버린다(disposeBag)
+
+        //observable 에 어떤 변화가 발생하면
+        //observable 은 emit 한다......> 이렇게해서 미리 binded도ᅵ어있던 Label 에도 변호ᅡ가생김.
     }
     
     @IBAction func changeNameButtonTapped(_ sender: AnyObject) {
